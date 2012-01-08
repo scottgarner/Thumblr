@@ -137,7 +137,7 @@
 					});
 					
 					$('#stage').append(photo);
-					$(photo).draggable({ containment: 'parent' });
+					$(photo).draggable();
 
 					thumblr.imageIndex++;
 					thumblr.preloadImage();
