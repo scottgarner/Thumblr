@@ -1,0 +1,145 @@
+body {
+	margin: 0;
+	padding: 0;
+	background: -webkit-linear-gradient(top, #234 0%,#111 100%);	
+	background: -moz-linear-gradient(top, #234 0%,#111 100%);
+	font-size: 10pt;
+	font-family: helvetical, arial, sans-serif;
+}
+
+#optionsButton {
+	z-index: 2000;
+
+	position: absolute;
+	left: 12px;
+	top: 12px;
+	width: 24px;
+	height: 24px;
+	background:#f9f9f9;
+	color: #999;
+	font-weight:bold;
+	font-size: 1.8em;
+	border-radius: 4px;
+	cursor: pointer;
+	
+	-webkit-box-shadow: 0 2px 5px #333;	
+	-webkit-user-select: none;
+	-moz-box-shadow: 0 2px 5px #333;	
+	-moz-user-select: none;	
+	
+}
+
+#optionsButton p {
+	margin: 0;
+	padding: 0;
+	left: 5px;
+	top: -1px;
+	position: absolute;
+}
+
+#options {
+	z-index: 1000;
+	border: #f9f9f9;
+	width: 448px;
+	height: 102px;
+	position: absolute;
+	background: #efefef;
+	margin-left: -240px;
+	margin-top: -35px;
+	left: 50%;
+	top: 50%;				
+	border-radius: 4px;
+	padding: 16px;
+	display: none;
+	
+	-webkit-box-shadow: 0 2px 5px #333;
+	-moz-box-shadow: 0 2px 5px #333;
+	
+}
+
+#account {
+
+	width: 448px;
+	border: none;
+	border-radius: 4px;
+	font-size: 2em;	
+	color: #666;
+	margin-top: 12px;
+	margin-bottom: 8px;
+}
+
+#accountLabel {
+	text-transform:uppercase;
+	font-size: 1em;	
+	color: #666;				
+}
+
+#accountLabel.error {
+	color: #993333;
+}
+
+#credits {
+	width: 448px;
+	position: absolute;
+	bottom: 0;
+	border-top: 1px solid #ccc;
+	padding-top: 2px;
+	margin-bottom: 12px;
+	text-align: right;
+}
+
+#credits a {
+	color: #bbb;			
+	text-decoration: none;
+}
+
+#stage {
+	width: 100%;
+	height: 100%;
+}
+
+.photo {
+	background: #fcfcfc;			
+	position: absolute;
+	padding: 12px;
+	opacity: 0;
+	cursor: pointer;
+	
+	-webkit-transform: rotate(3deg);
+	-webkit-box-shadow: 0 2px 5px #333;
+	
+	-moz-transform: rotate(3deg);
+	-moz-box-shadow: 0 2px 5px #333;	
+}
+
+.photo:nth-child(2n) {
+	-webkit-transform: rotate(-12deg);
+	-moz-transform: rotate(-12deg);
+}
+
+.photo:nth-child(3n) {
+	-webkit-transform: rotate(6deg);
+	-moz-transform: rotate(6deg);	
+}			
+
+@-webkit-keyframes appear {
+	0% {opacity: 0; -webkit-transform: scale(1.2);}	
+	100% {opacity: 1;}
+}
+
+@-moz-keyframes appear {
+	0% {opacity: 0; -moz-transform: scale(1.2);}	
+	100% {opacity: 1;}
+}
+
+.animated {
+	-webkit-animation: 2s ease;
+	-webkit-animation-fill-mode: both;
+	-moz-animation: 2s ease;
+	-moz-animation-fill-mode: both;	
+}			
+
+.appear {
+	-webkit-animation-name: appear;
+	-moz-animation-name: appear;
+}
