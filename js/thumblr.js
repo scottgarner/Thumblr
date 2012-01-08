@@ -5,6 +5,16 @@
 				
 				init: function () {
 					
+					var body = document.body || document.documentElement;
+					var bodyStyle = body.style;
+					var animationSupport = bodyStyle.WebkitAnimation !== undefined || bodyStyle.MozAnimation !== undefined;
+
+					if (!animationSupport) {
+						$("#optionsButton").hide();
+						$("#error").show();
+						return -1;
+					}
+					
 					$("#account").change( function() {
 						var username = $("#account").val();
 						location.hash = username;
@@ -127,7 +137,7 @@
 					});
 					
 					$('#stage').append(photo);
-					$(photo).draggable({ containment: 'window' });
+					$(photo).draggable({ containment: 'parent' });
 
 					thumblr.imageIndex++;
 					thumblr.preloadImage();
