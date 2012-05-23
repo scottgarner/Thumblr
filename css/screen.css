@@ -3,7 +3,7 @@ body {
 	padding: 0;
 	background: url('../images/dark.png');
 	font-size: 10pt;
-	font-family: helvetical, arial, sans-serif;
+	font-family: helvetica, arial, sans-serif;
 	overflow: hidden;
 }
 
@@ -19,14 +19,13 @@ body {
 	z-index: 2000;
 
 	position: absolute;
-	left: 12px;
-	top: 12px;
-	width: 24px;
-	height: 24px;
+	right: 24px;
+	top: -8px;
+	padding: 12px 6px 4px 6px;
+
 	background:#f9f9f9;
+	background-image: url('../images/light.png');
 	color: #999;
-	font-weight:bold;
-	font-size: 1.8em;
 	border-radius: 4px;
 	cursor: pointer;
 	
@@ -34,15 +33,13 @@ body {
 	-webkit-user-select: none;
 	-moz-box-shadow: 0 2px 5px #333;	
 	-moz-user-select: none;	
-	
+
+	text-transform: uppercase;
+	font-size: .8em;
 }
 
-#optionsButton p {
-	margin: 0;
-	padding: 0;
-	left: 5px;
-	top: -1px;
-	position: absolute;
+#optionsButton:hover {
+	top: -6px;
 }
 
 #options, #error {
@@ -52,6 +49,7 @@ body {
 	height: 102px;
 	position: absolute;
 	background: #efefef;
+	background-image: url('../images/light.png');	
 	margin-left: -240px;
 	margin-top: -35px;
 	left: 50%;

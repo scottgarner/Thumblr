@@ -10,19 +10,14 @@
 					var animationSupport = bodyStyle.WebkitAnimation !== undefined || bodyStyle.MozAnimation !== undefined;
 
 					if (!animationSupport) {
-						$("#optionsButton").hide();
-						$("#error").show();
+						$("#optionsButton").fadeOut("fast");
+						$("#error").fadeIn("fast");
 						return -1;
 					}
 					
-					$("#account").change( function() {
-						var username = $("#account").val();
-						location.hash = username;
-						thumblr.fetchData(username);
-					});
 					
 					$("#optionsButton").click( function() {
-						$("#options").toggle();
+						$("#options").fadeToggle("fast");
 						$("#account").focus();
 					});
 					
@@ -31,6 +26,21 @@
 						username = location.hash.substr(1);
 						$('#account').val(username);
 					}
+
+					$(document).keyup(function(e) {
+						if (e.keyCode == 13) { 
+						
+							var username = $("#account").val();
+
+							if (location.hash != "#" + username) {
+								location.hash = username;
+								thumblr.fetchData(username);
+							} else {
+								$('#options').fadeOut("fast"); 							
+							}
+						}
+						if (e.keyCode == 27) { $('#options').fadeOut("fast"); }
+					});					
 					
 					thumblr.fetchData(username);
 
@@ -52,9 +62,9 @@
 								thumblr.tumblrData = data;
 																
 								$('#stage').fadeOut('slow', function() {
-									$('.photo').remove();
-									 
+									$('.photo').remove();									 
 									$('#stage').show();
+									thumblr.addImage();
 								});							
 								
 								thumblr.maxZIndex = 0;
@@ -62,16 +72,17 @@
 								
 								$("#accountLabel").html('tumblr account');
 								$("#accountLabel").removeClass("error");
-								$('#options').fadeOut();
+								$('#options').fadeOut("fast");
 								
 								thumblr.preloadImage();
 								
-								clearTimeout (thumblr.interval);
+								clearTimeout (thumblr.interval);								
 								thumblr.interval = setInterval ( "thumblr.addImage()", 4000 );	
+
 							} else {
 								$("#accountLabel").html('no photos here');
 								$("#accountLabel").addClass("error");
-								$('#options').fadeIn();
+								$('#options').fadeIn("fast");
 								$('#account').focus();
 							}
 							
@@ -79,7 +90,7 @@
 						error: function() {
 							$("#accountLabel").html('not found');
 							$("#accountLabel").addClass("error");
-							$('#options').fadeIn();							
+							$('#options').fadeIn("fast");							
 						}						
 					});
 				},
