@@ -2,6 +2,7 @@
 				imageIndex: 0,
 				maxZIndex: 1,
 				tumblrData: null,
+				username: null,
 				
 				init: function () {
 					
@@ -21,20 +22,20 @@
 						$("#account").focus();
 					});
 					
-					var username = "scottgarner";
+					thumblr.username = "scottgarner";
 					if (location.hash) {
-						username = location.hash.substr(1);
-						$('#account').val(username);
+						thumblr.username = location.hash.substr(1);
+						$('#account').val(thumblr.username);
 					}
 
 					$(document).keyup(function(e) {
 						if (e.keyCode == 13) { 
 						
-							var username = $("#account").val();
+							thumblr.username = $("#account").val();
 
-							if (location.hash != "#" + username) {
-								location.hash = username;
-								thumblr.fetchData(username);
+							if (location.hash != "#" + thumblr.username) {
+								location.hash = thumblr.username;
+								thumblr.fetchData(thumblr.username);
 							} else {
 								$('#options').fadeOut("fast"); 							
 							}
@@ -42,13 +43,13 @@
 						if (e.keyCode == 27) { $('#options').fadeOut("fast"); }
 					});					
 					
-					thumblr.fetchData(username);
+					thumblr.fetchData(thumblr.username);
 
 				},
 				
-				fetchData: function(username) {
+				fetchData: function() {
 					
-					var tumblrURL = username;
+					var tumblrURL = thumblr.username;
 					
 					if (tumblrURL.indexOf(".") == -1) var tumblrURL = tumblrURL + ".tumblr.com";
 					
@@ -99,7 +100,7 @@
 				
 				preloadImage: function() {
 					if (thumblr.imageIndex >= thumblr.tumblrData.posts.length) {
-						clearTimeout (thumblr.interval);
+						//clearTimeout (thumblr.interval);
 						return -1;
 					}
 
@@ -111,7 +112,8 @@
 				
 				addImage: function() {
 					if (thumblr.imageIndex >= thumblr.tumblrData.posts.length) {
-						clearTimeout (thumblr.interval);
+						clearTimeout (thumblr.interval);						
+						thumblr.fetchData();
 						return -1;
 					}
 				
